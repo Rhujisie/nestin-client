@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = 'https://nestIn.onrender.com';
+const BASE_URL = 'https://nestin.onrender.com';
 
 export default axios.create({
     baseURL: BASE_URL,
