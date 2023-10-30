@@ -76,8 +76,7 @@ header{
 }
 .header-filter>a{
     padding: 5px 8px;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 14px;
     border-radius: 8px;
     transition: all .2s ease-in-out;
 }
@@ -109,16 +108,15 @@ nav{
     color: var(--yellow);
 }
 .search{
-    width: 180px;
+    width: 210px;
     height: 35px;
-    padding: 10px;
+    padding: 10px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-radius: 25px;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0125em 0.0025em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.3em, rgba(255, 255, 255, 0.1) 0px 0px 0px .5px inset;
+    border-bottom: 1px solid var(--word);
     transition: all .5s ease-in-out;
 }
 .search > input{
@@ -189,7 +187,6 @@ nav{
 /* outlet */
 .outlet{
     min-height: 80vh;
-    padding: 15px;
 }
 
 /* Main */
@@ -696,9 +693,9 @@ textarea{
 }
 .places{
     position: relative;
-    width: 70vw;
+    width: 90vw;
     margin: auto;
-    height: 365px;
+    height: 370px;
     margin-bottom: 20px;
     border-radius: 8px;
     transition: all .3s ease-in-out;
@@ -710,21 +707,20 @@ textarea{
 }
 .photos-container{
     height: 241px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 .place-description{
     height: 124px;
     padding: 5px 5px;
-    background-color: #191717;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
 .place-description> h1{
-    font-size: 13px;
-    font-weight: 400;
-    color: white;
+    font-size: 14px;
 }
 .grey-place{
-    font-size: 12px;
+    font-size: 13px;
     color: var(--grey);
 }
 .bhk-contianer{
@@ -736,7 +732,7 @@ textarea{
     height: 38px;
 }
 .place-description> .bhk-contianer> h1{
-    font-size: 12px;
+    font-size: 13px;
 }
 .places-icon{
     width: 16px;
@@ -947,7 +943,15 @@ footer{
     grid-template-columns: auto auto;
     gap: 50px;
     padding: 10px;
-    margin: auto;
+}
+.footer-container > div{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-container> div >div>{
+    margin: 20px;
 }
 .footer-heading{
     font-size: 14px;
@@ -958,6 +962,7 @@ footer{
 .footer-container> div >div>a {
     font-size: 13px;
     color: var(--grey);
+    margin: 10px;
 }
 .inc{
     text-align: center;
@@ -1005,6 +1010,9 @@ footer{
     .types-of-places{
         width: 90vw;
         margin: auto;
+    }
+    .header-filter>a{
+        font-size: 18px;
     }
     nav{
         padding: 0 80px;
