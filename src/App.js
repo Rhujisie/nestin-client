@@ -1,57 +1,41 @@
 import './App.css';
 //import dependencies
-import {lazy, Suspense} from 'react'
+import axios from 'axios'
 import {Routes, Route} from 'react-router-dom'
 //import react components
-import Loader from './components/Loader'
-import Layout from './components/Layout'
+import Layout from './components/Layout';
+import Index from './components/pages/Main'
+import Rent from './components/pages/Rent'
+import Hotel from './components/pages/Hotel'
+import HomeStay from './components/pages/HomeStay'
+import Pg from './components/pages/Pg'
+import Hostel from './components/pages/Hostel'
+import Login from './components/auth/Login'
+import WishList from './components/auth/Wishlist';
+import NestYourHome from './components/auth/NestYourHome';
+import Register from './components/auth/Register';
+import Profile from './components/auth/Profile';
+import RequireAuth from './components/auth/RequireAuth';
+import PersistLogin from './components/auth/PersistLogin';
+import DescribeYourHome from './add-accomodation-pages/DescribeYourHome';
+import AddAccomodationLayout from './add-accomodation-pages/AddAccomodationLayout'
+import Location from './add-accomodation-pages/Location';
+import Details from './add-accomodation-pages/Details';
+import Photos from './add-accomodation-pages/Photos';
+import Amenities from './add-accomodation-pages/Amenities';
+import MyPlace from './components/place/MyPlace';
+import Place from './components/place/Place'
 
-const Index = lazy(()=> import('./components/pages/Main'))
-const Rent = lazy(()=> import('./components/pages/Rent'))
-const Hotel = lazy(()=> import('./components/pages/Hotel'))
-const HomeStay = lazy(()=> import('./components/pages/HomeStay'))
-const Pg = lazy(()=> import('./components/pages/Pg'))
-const Hostel = lazy(()=> import('./components/pages/Hostel'))
-
-const Login = lazy(()=> import('./components/auth/Login'))
-const Register = lazy(()=> import('./components/auth/Register'))
-const Recovery = lazy(()=> import('./components/auth/Recovery'))
-const ResetPassword = lazy(()=> import('./components/auth/ResetPassword'))
-
-const WishList = lazy(()=> import('./components/auth/Wishlist'))
-const NestYourHome = lazy(()=> import('./components/auth/NestYourHome'))
-
-const Profile = lazy(()=> import('./components/auth/Profile'))
-const RequireAuth = lazy(()=> import('./components/auth/RequireAuth'))
-const PersistLogin = lazy(()=> import('./components/auth/PersistLogin'))
-const DescribeYourHome = lazy(()=> import('./add-accomodation-pages/DescribeYourHome'))
-const AddAccomodationLayout = lazy(()=>  import('./add-accomodation-pages/AddAccomodationLayout'))
-const Location = lazy(()=> import('./add-accomodation-pages/Location'))
-const Details = lazy(()=>  import('./add-accomodation-pages/Details'))
-const Photos = lazy(()=> import('./add-accomodation-pages/Photos'))
-const Amenities = lazy(()=>  import('./add-accomodation-pages/Amenities'))
-const MyPlace = lazy(()=>  import('./components/place/MyPlace'))
-const Place = lazy(()=> import('./components/place/Place'))
+axios.defaults.baseURL = 'http://localhost:3000/api/v1'
+axios.defaults.withCredentials = true
 
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader/>}>
       <Routes>
         <Route path='/' element={<Layout/>}>
           {/* public route */}
-            <Route index element={<Index/>}/>
-            <Route path='/rent' element={<Rent/>}/>
-            <Route path='/hotel' element={<Hotel/>}/>
-            <Route path='/homestay' element={<HomeStay/>}/>
-            <Route path='/pg' element={<Pg/>}/>
-            <Route path='/hostel' element={<Hostel/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/recovery' element={<Recovery/>}/>
-            <Route path='/reset' element={<ResetPassword/>}/>
-            <Route path='/register' element={<Register/>}/>
-            <Route path='/place/:id' element={<Place/>}/>
-          {/* <Route element={<PersistLogin/>}>
+          <Route element={<PersistLogin/>}>
             <Route index element={<Index/>}/>
             <Route path='/rent' element={<Rent/>}/>
             <Route path='/hotel' element={<Hotel/>}/>
@@ -61,10 +45,9 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/place/:id' element={<Place/>}/>
-          </Route>end: persit login */}
           
           {/* login required and roles*/}
-          <Route element={<PersistLogin/>}>
+
             <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}>
               <Route path='/nestyourhome' element={<NestYourHome/>}/>
               <Route path='/wishlist' element={<WishList/>}/>
@@ -73,7 +56,7 @@ function App() {
             </Route>{/*end: roles */}
           </Route>{/* end: persit login*/}
         </Route>{/* end: main layout */}
-
+        
           <Route element={<PersistLogin/>}>
             <Route element={< AddAccomodationLayout/>}>
                 <Route path='/nestyourhome/addaccomodation' element={<DescribeYourHome/>}/>
@@ -85,7 +68,6 @@ function App() {
             </Route> {/* end: /nestyourhome */}
           </Route>{/* end: persit login*/}
       </Routes>
-      </Suspense>
     </>
   );
 }
