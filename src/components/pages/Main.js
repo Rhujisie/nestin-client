@@ -15,12 +15,12 @@ export default function Index(){
     const axiosPrivate = useAxiosPrivate()
     const {location} = useLocation()
     const {auth} = useAuth()
-    console.log(auth, location)
+    console.log('main', auth, location)
     //get place
     useEffect(()=>{
       const getPlace = async()=>{
         try{
-          if(auth?.accessToken){
+          if(auth.accessToken){
             if(location){
               const {data} = await axiosPrivate.get(`/user/main/all/all?search=${location}`)
               setPlaces(data)
@@ -48,19 +48,18 @@ export default function Index(){
     useEffect(()=>{
       const getWishlist = async()=>{
         try{
-          console.log('wishlist')
           const {data} = await axiosPrivate.get('/wishlist/list')
           setWishlist(data.placeID)
         }catch(err){
           console.log(err)
         }
       }
-      auth?.accessToken && getWishlist()
+      auth.accessToken && getWishlist()
     },[places])
 
     let placeElem = []
 
-    if(auth && wishlist?.length){
+    if(auth.accessToken && wishlist?.length){
       placeElem = places?.map((place, index)=>
       <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
     }else{

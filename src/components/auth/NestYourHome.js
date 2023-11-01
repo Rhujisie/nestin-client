@@ -12,7 +12,6 @@ import Add from '../../icon/add.png'
 export default function NestYourHome(){
 
     const [places, setPlaces] = useState()
-    const [wishlist, setWishlist] = useState()
     const {auth} = useAuth()
     const axiosPrivate = useAxiosPrivate()
     //get places
@@ -28,9 +27,9 @@ export default function NestYourHome(){
         }
         getPlace()
     },[])
-
+    
     const placesElem = places?.map((place, i)=> <Places place={place} 
-        key={i} heart={wishlist?.includes(place._id)}/>)
+        key={i}/>)
 
     return(
         <div className="nest-your-home">
@@ -57,11 +56,7 @@ export default function NestYourHome(){
                     <p style={{marginLeft: '10px'}} className="para">
                         Share your slice of paradise with the world!<br/> List your place by clicking on Add accomodation
                     </p>
-                </>}
-            {/* <div className="listing">
-                {wishlist && placesElem}
-            </div> */}
-
+            </>}
         </div>
     )
 }

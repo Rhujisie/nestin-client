@@ -55,7 +55,7 @@ export default function Places({place, heart}){
     }
     return(
             <div className="places">
-                <Link to={location.pathname === '/nestyourhome' || '/profile'?
+                <Link to={location.pathname === '/nestyourhome'|| '/profile'?
                 `/myplace/${place._id}`: `/place/${place._id}`}>
                 <div className='photos-container'>
                     <Photos photos={place.photos}/>

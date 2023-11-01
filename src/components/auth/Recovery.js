@@ -28,11 +28,12 @@ export default function Recovery(){
         console.log('generate')
         e.preventDefault()
        try{
-        const {data} = await axios.post('/generateotp', {email: email},{
+            await axios.post('/generateotp', {email: email},{
             headers:{'Content-Type': 'application/json'}
         })
         setRecieveOTP(true)
        }catch(err){
+        console.log(err)
         setErrMsg(err.response.data.msg)
         errRef.current.focus()
        }

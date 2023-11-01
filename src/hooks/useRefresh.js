@@ -7,10 +7,12 @@ export default function useRefresh(){
 
     const refresh = async()=>{
         try{
+            console.log('refresh')
             const {data} = await axios.get('/refresh')
             setAuth(prev=> ({...prev, ...data}))
             return data
         }catch(err){
+            console.log(err)
             return null
         }
     }

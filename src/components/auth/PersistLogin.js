@@ -13,7 +13,7 @@ export default function PersistLogin(){
         let isMounted = true
         const verifyRefreshToken = async()=>{
             try{
-                console.log('call verify')
+                console.log('verify')
                 await refresh()
             }catch(err){
                 console.log(err)
@@ -23,8 +23,7 @@ export default function PersistLogin(){
                 isMounted && setIsLoading(false)
             }
         }
-
-           (!auth?.accessToken)? verifyRefreshToken(): setIsLoading(false)
+        (!auth?.accessToken)? verifyRefreshToken(): setIsLoading(false)
 
         //cleaning memory leak(state is changed when component is not mounted)
         return ()=>{

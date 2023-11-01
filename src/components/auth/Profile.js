@@ -1,11 +1,17 @@
+import { useEffect, useState } from 'react'
+import {useLocation, useNavigate, Link} from 'react-router-dom'
+
+import Places from '../place/Places'
+
+import useLogout from '../../hooks/useLogout'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useUser from '../../hooks/useUser'
-import { useEffect } from 'react'
-import {useLocation, useNavigate } from 'react-router-dom'
-import useLogout from '../../hooks/useLogout'
+
+import Add from '../../icon/add.png'
 
 export default function Profile(){
 
+    const [places, setPlaces] = useState()
     const {user, setUser} = useUser()
     const axiosPrivate = useAxiosPrivate()
     const logout = useLogout()
@@ -35,12 +41,27 @@ export default function Profile(){
             controller.abort();
         }
     }, [])
+
+    //get places
+    useEffect(()=>{
+        const getPlace = async()=>{
+            try{
+                const {data} = await axiosPrivate.get('/place')
+                setPlaces(data)
+              }catch(err){
+                console.log(err)
+            }
+        }
+        getPlace()
+    },[])
     //logout
     const signOut = async()=>{
         await logout()
         localStorage.clear()
         navigate('/')
     }
+    const placesElem = places?.map((place, i)=> <Places place={place} 
+    key={i}/>)
     return(
         <>
         <h2 className="page-heading">Profile</h2>
@@ -55,6 +76,28 @@ export default function Profile(){
                 </div>
             </div>
             <button onClick={signOut} className='page-button logout-button'>Logout</button>
+            <div className="add-accomodation">
+                <div className="add-logo">
+                    <img src={Add} alt='add'/>
+                </div>
+                <div>
+                    <Link to='/nestyourhome/addaccomodation' 
+                    style={{textDecoration: 'none', color: 'white',
+                    fontWeight: '600', fontSize: '14px'}}>
+                        Add Accomodation
+                    </Link>
+                </div>
+            </div>
+            {places?.length? <><h2 className="page-sub-heading">My Listing:</h2>
+                    <div className="main main-nest">
+                        {placesElem}
+                    </div>
+                    </>
+                : <><h2 className="page-sub-heading">No Listing</h2>
+                    <p style={{marginLeft: '10px'}} className="para">
+                        Share your slice of paradise with the world!<br/> List your place by clicking on Add accomodation
+                    </p>
+            </>}
         </div>
         </>
     )

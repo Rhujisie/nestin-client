@@ -43,7 +43,7 @@ export default function MyPlace(){
             const {data} = await axiosPrivate.get(`/review/comment/${id}`)
             setReviews(data)
         }
-        getReview()
+        //getReview()
     },[])
 
     //erasing error on place change
