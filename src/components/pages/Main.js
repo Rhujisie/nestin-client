@@ -16,23 +16,29 @@ export default function Index(){
     const {location} = useLocation()
     const {auth} = useAuth()
 
+    console.log('auth', auth, location)
+
     //get place
     useEffect(()=>{
       const getPlace = async()=>{
         try{
-          if(auth.accessToken){
-            if(location.length){
+          if(auth?.accessToken){
+            if(location){
+              console.log('logged in, location')
               const {data} = await axiosPrivate.get(`/user/main/all/all?search=${location}`)
               setPlaces(data)
             }else{
+              console.log('logged in')
               const {data} = await axiosPrivate.get('/user/main/all/all')
               setPlaces(data)
             }
           }else{
-            if(location.length){
+            if(location){
+              console.log('not logged in, location')
               const {data} = await axios.get(`/main/all/all?search=${location}`)
               setPlaces(data)
             }else{
+              console.log('not logged in ')
               const {data} = await axios.get('/main/all/all')
               setPlaces(data)
             }
@@ -54,12 +60,12 @@ export default function Index(){
           console.log(err)
         }
       }
-      auth && getWishlist()
+      auth.accessToken && getWishlist()
     },[places])
 
     let placeElem = []
 
-    if(auth && wishlist?.length){
+    if(auth.accessToken && wishlist?.length){
       placeElem = places?.map((place, index)=>
       <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
     }else{
