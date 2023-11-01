@@ -6,7 +6,6 @@ import useAuth from "../../hooks/useAuth";
 
 export default function PersistLogin(){
     const [isLoading, setIsLoading] = useState(true)
-    //const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') || false)
     const refresh = useRefresh()
     const {auth} = useAuth()
 

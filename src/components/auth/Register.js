@@ -81,7 +81,6 @@ export default function Register(){
         e.preventDefault()
         try{
             const {data} = await axios.post('/register', loginData)
-            localStorage.setItem('loggedIn', true)
             setAuth(data)
             navigate(from, {replace: true})
         }catch(err){

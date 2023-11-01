@@ -36,7 +36,27 @@ body{
 #root{
     position: relative;
 }
-
+.loader{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ;
+  }
+  @keyframes bounce {
+    0%{transform: scale(1);}
+    50%{transform: scale(.4);}
+    100%{transform: scale(1);}
+  }
 .hidden{
     visibility: hidden;
 }
@@ -76,7 +96,7 @@ header{
 }
 .header-filter>a{
     padding: 5px 8px;
-    font-size: 14px;
+    font-size: 15px;
     border-radius: 8px;
     transition: all .2s ease-in-out;
 }
@@ -149,17 +169,16 @@ nav{
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 60px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 0  18vw;
     z-index: 1000;
     transition: bottom .5s ease-in-out;
 }
 .active-base{
-    bottom: -7vh;
+    bottom: -80px;
 }
 .nav-base-child{
     width: auto;
@@ -883,7 +902,7 @@ textarea{
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid var(--yellow);
+    border: 1px solid var(--green);
 }
 .detail-container > div>div{
     color: var(--word);
@@ -917,7 +936,7 @@ textarea{
     color:var(--yellow);
     height: 1px;
     border: none;
-    background-color: var(--green);
+    background-color: var(--yellow);
 }
 /* wishlist */
 
@@ -941,7 +960,7 @@ footer{
 .footer-container{
     display: grid;
     grid-template-columns: auto auto;
-    gap: 50px;
+    column-gap: 50px;
     padding: 10px;
 }
 .footer-container > div{
@@ -954,7 +973,7 @@ footer{
     margin: 20px;
 }
 .footer-heading{
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 5s00;
     color: var(--white);
     margin-bottom: 10px;
@@ -986,10 +1005,11 @@ footer{
     .main{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-column-gap: 6px;
+        grid-column-gap: 3vw;
         grid-row-gap:20px;
         align-items: center;
         justify-content: start;
+        padding:0 10vw;
     }
     .places{
         width: 310px;
@@ -1012,7 +1032,7 @@ footer{
         margin: auto;
     }
     .header-filter>a{
-        font-size: 18px;
+        font-size: 17px;
     }
     nav{
         padding: 0 80px;

@@ -6,7 +6,7 @@ import Rating from '../review/Rating'
 import Review from '../review/Review'
 import Photos from './Photos'
 
-import Rupee from '../../icon/rupee-black.png'
+import Rupee from '../../icon/rupee.png'
 import Bedroom from '../../icon/bedroom.png'
 import Kitchen from '../../icon/kitchen.png'
 import Livingroom from '../../icon/sofa.png'
@@ -53,7 +53,7 @@ export default function MyPlace(){
             const {data} = await axios.get(`/review/comment/${id}`)
             setReviews(data)
         }
-        getReview()
+        //getReview()
     },[])
 
     //erasing error on place change
@@ -85,10 +85,10 @@ export default function MyPlace(){
                 <div className='rating-place'>
                         <Rating placeId={id}/>
                 </div>
-                <div className='page-sub-heading'>
+                <div className='page-sub-heading' style={{fontSize: '14px'}}>
                     <span className='grey-place' style={{fontSize: '14px'}}>Location: </span>
                          {place?.address}, {place?.city}, {place?.district}</div>
-                <div className='page-sub-heading'>
+                <div className='page-sub-heading' style={{fontSize: '14px'}}>
                 <span className='grey-place' style={{fontSize: '14px'}}>Landmark: </span>
                     {place?.landmark}</div>
             </div>

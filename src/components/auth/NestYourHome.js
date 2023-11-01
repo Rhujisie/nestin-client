@@ -1,9 +1,13 @@
-import useAuth from "../../hooks/useAuth"
 import { Link } from "react-router-dom"
-import Add from '../../icon/addition.png'
 import { useEffect, useState } from "react"
+import {motion} from 'framer-motion'
+
+import useAuth from "../../hooks/useAuth"
 import useAxiosPrivate from "../../hooks/useAxiosPrivate"
+
 import Places from '../place/Places'
+
+import Add from '../../icon/add.png'
 
 export default function NestYourHome(){
 
@@ -24,21 +28,15 @@ export default function NestYourHome(){
         }
         getPlace()
     },[])
-    //get wishlist 
-    useEffect(()=>{
-        const getWishlist = async()=>{
-            const {data} = await axiosPrivate.get('/wishlist/list')
-            setWishlist(data)
-        }
-        //getWishlist()
-    },[])
+
     const placesElem = places?.map((place, i)=> <Places place={place} 
         key={i} heart={wishlist?.includes(place._id)}/>)
 
     return(
         <div className="nest-your-home">
-            <h2 className="page-heading">Hello, {auth?.name}</h2>
-            <div className="add-accomodation">
+            <h2 className="page-heading">Hello, {auth?.name}:</h2>
+            <motion.div className="add-accomodation" 
+            whileHover={{scale: 1.05}} whileTap={{scale: .95}}>
                 <div className="add-logo">
                     <img src={Add} alt='add'/>
                 </div>
@@ -49,8 +47,8 @@ export default function NestYourHome(){
                         Add Accomodation
                     </Link>
                 </div>
-            </div>
-            {places?.length? <><h2 className="page-sub-heading">My Listing:</h2>
+            </motion.div>
+            {places?.length? <><h2 className="page-sub-heading" style={{fontWeight: '700'}}>My Listing:</h2>
                     <div className="main main-nest">
                         {placesElem}
                     </div>

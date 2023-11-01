@@ -36,8 +36,6 @@ export default function Login(){
         const {data} = await axios.post('/login', loginData,{
             headers:{'Content-Type': 'application/json'}
         })
-        console.log(data)
-        localStorage.setItem('loggedIn', true)
         setAuth(data)
         navigate('/',{replace: true})
        }catch(err){

@@ -1,33 +1,48 @@
-
 import { useEffect, useState } from "react"
+
 import Places from "../place/Places"
 import axios from '../../api/axios'
+
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import useLocation from "../../hooks/useLocation"
+import useAuth from "../../hooks/useAuth"
 
 export default function GuestHouse(){
+
+  const {auth} = useAuth()
     
   const [places, setPlaces] = useState()
   const [wishlist, setWishlist] = useState()
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') || false)
 
   const axiosPrivate = useAxiosPrivate()
+  const {location} = useLocation()
 
   //get places
   useEffect(()=>{
-      const getPlace = async()=>{
-        try{
-          if(loggedIn){
-            const {data} = await axiosPrivate.get('/user/main/homestay')
+    const getPlace = async()=>{
+      try{
+        if(auth.accessToken){
+          if(location.length){
+            const {data} = await axiosPrivate.get(`/user/main/all/homestay?search=${location}`)
             setPlaces(data)
           }else{
-            const {data} = await axios.get('/main/homestay')
+            const {data} = await axiosPrivate.get('/user/main/all/homestay')
             setPlaces(data)
           }
-        }catch(err){
-          console.log(err)
+        }else{
+          if(location.length){
+            const {data} = await axios.get(`/main/all/homestay?search=${location}`)
+            setPlaces(data)
+          }else{
+            const {data} = await axios.get('/main/all/homestay')
+            setPlaces(data)
+          }
         }
+      }catch(err){
+        console.log(err)
       }
-      getPlace()
+    }
+    getPlace()
   },[])
   
   //get wishlist 
@@ -40,12 +55,12 @@ export default function GuestHouse(){
         console.log(err)
       }
     }
-    loggedIn && getWishlist()
+    auth && getWishlist()
   },[places])
 
   let placeElem = []
 
-  if(loggedIn && wishlist){
+  if(auth && wishlist?.length){
     placeElem = places?.map((place, index)=>
     <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
   }else{

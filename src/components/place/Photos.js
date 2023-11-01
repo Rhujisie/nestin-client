@@ -1,7 +1,8 @@
-import LeftArrow from '../../icon/arrow-left.png'
-import Arrow from '../../icon/arrow.png'
+import LeftArrow from '../../icon/left-arrow.png'
+import Arrow from '../../icon/right-arrow.png'
 import CarouselItem from './CarouselItem'
 import {useState} from 'react'
+import {LayoutGroup, motion} from 'framer-motion'
 
 export default function Photos({photos}){
     
@@ -27,9 +28,17 @@ export default function Photos({photos}){
       const imageElem = photos.map((photo, i)=> 
       <CarouselItem key={i} photo={photo}/>)
 
+      const arrowVariant = {
+        hidden:{opacity: 0},
+        visible:{opacity: 1},
+        transition: {duration: 1, type: 'spring'}
+      }
+      
+
     return (
         <>
-            <div className='photos'>
+            <motion.div className='photos' initial='hidden' 
+            whileHover='visible' transition='transition'>
                 <div className='carousel'>
                     <div className='inner' 
                         style={{transform: `translateX(-${activeIndex * 100}%)`}}>
@@ -37,13 +46,17 @@ export default function Photos({photos}){
                     </div>
                 </div>
                 <div className='dot-container'>
-                {imageIndexElem}
-            </div>
-                {activeIndex? <img src={LeftArrow} alt='right arrow' 
-                    className='right-chevoron' onClick={handleLeft}/>: ''}
-                {activeIndex < photos.length - 1? 
-                <img src={Arrow} alt='left arrow' 
-                    className='left-chevoron' onClick={handleRight}/>: ''}
-            </div>
+                    {imageIndexElem}
+                </div>
+                <LayoutGroup>
+                    {activeIndex? <motion.img src={LeftArrow} alt='right arrow' 
+                        className='right-chevoron' onClick={handleLeft}
+                        variants={arrowVariant}/>: ''}
+                    {activeIndex < photos.length - 1?
+                        <motion.img src={Arrow} alt='left arrow' 
+                        className='left-chevoron' onClick={handleRight}
+                        variants={arrowVariant}/>: ''}
+                </LayoutGroup>
+            </motion.div>
         </>)
 }
