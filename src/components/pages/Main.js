@@ -20,7 +20,7 @@ export default function Index(){
     useEffect(()=>{
       const getPlace = async()=>{
         try{
-          if(auth.accessToken){
+          if(auth?.accessToken){
             if(location.length){
               const {data} = await axiosPrivate.get(`/user/main/all/all?search=${location}`)
               setPlaces(data)
@@ -55,7 +55,7 @@ export default function Index(){
           console.log(err)
         }
       }
-      auth.accessToken && getWishlist()
+      auth?.accessToken && getWishlist()
     },[places])
 
     let placeElem = []

@@ -21,7 +21,7 @@ export default function Hotel(){
   useEffect(()=>{
     const getPlace = async()=>{
       try{
-        if(auth.accessToken){
+        if(auth?.accessToken){
           if(location.length){
             const {data} = await axiosPrivate.get(`/user/main/all/hotel?search=${location}`)
             setPlaces(data)
@@ -55,7 +55,7 @@ export default function Hotel(){
         console.log(err)
       }
     }
-    auth.accessToken && getWishlist()
+    auth?.accessToken && getWishlist()
   },[places])
 
   let placeElem = []

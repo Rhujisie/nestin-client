@@ -21,7 +21,7 @@ export default function Pg(){
   useEffect(()=>{
     const getPlace = async()=>{
       try{
-        if(auth.accessToken){
+        if(auth?.accessToken){
           if(location.length){
             const {data} = await axiosPrivate.get(`/user/main/all/pg?search=${location}`)
             setPlaces(data)
@@ -55,7 +55,7 @@ export default function Pg(){
         console.log(err)
       }
     }
-    auth.accessToken && getWishlist()
+    auth?.accessToken && getWishlist()
   },[places])
 
   let placeElem = []
