@@ -55,7 +55,7 @@ export default function Rent(){
               console.log(err)
             }
         }
-        auth && getWishlist()
+        auth.accessToken && getWishlist()
     },[places])
     
     let placeElem = []

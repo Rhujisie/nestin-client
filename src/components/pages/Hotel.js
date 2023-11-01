@@ -55,7 +55,7 @@ export default function Hotel(){
         console.log(err)
       }
     }
-    auth && getWishlist()
+    auth.accessToken && getWishlist()
   },[places])
 
   let placeElem = []

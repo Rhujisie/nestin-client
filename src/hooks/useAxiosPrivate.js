@@ -23,7 +23,6 @@ export default function useAxiosPrivate(){
             response => response,
             async(error)=>{
                 const prevRequest = error?.config
-                console.log(error)
                 //(error?.response?.status === 403) on if statment 
                 if(error && !prevRequest?.sent){
                     prevRequest.sent = true

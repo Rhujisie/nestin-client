@@ -55,7 +55,7 @@ export default function Pg(){
         console.log(err)
       }
     }
-    auth && getWishlist()
+    auth.accessToken && getWishlist()
   },[places])
 
   let placeElem = []
