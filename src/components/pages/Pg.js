@@ -22,7 +22,7 @@ export default function Pg(){
     const getPlace = async()=>{
       try{
         if(auth?.accessToken){
-          if(location.length){
+          if(location){
             const {data} = await axiosPrivate.get(`/user/main/all/pg?search=${location}`)
             setPlaces(data)
           }else{
@@ -30,7 +30,7 @@ export default function Pg(){
             setPlaces(data)
           }
         }else{
-          if(location.length){
+          if(location){
             const {data} = await axios.get(`/main/all/pg?search=${location}`)
             setPlaces(data)
           }else{

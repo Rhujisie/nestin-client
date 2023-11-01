@@ -22,7 +22,7 @@ export default function Hostel(){
     const getPlace = async()=>{
       try{
         if(auth?.accessToken){
-          if(location.length){
+          if(location){
             const {data} = await axiosPrivate.get(`/user/main/all/hostel?search=${location}`)
             setPlaces(data)
           }else{
@@ -30,7 +30,7 @@ export default function Hostel(){
             setPlaces(data)
           }
         }else{
-          if(location.length){
+          if(location){
             const {data} = await axios.get(`/main/all/hostel?search=${location}`)
             setPlaces(data)
           }else{
