@@ -36,10 +36,11 @@ const Place = lazy(()=> import('./components/place/Place'))
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader/>}>
       <Routes>
         <Route path='/' element={<Layout/>}>
           {/* public route */}
+      <Suspense fallback={<Loader/>}>
+          <Route element={<PersistLogin/>}>
             <Route index element={<Index/>}/>
             <Route path='/rent' element={<Rent/>}/>
             <Route path='/hotel' element={<Hotel/>}/>
@@ -64,16 +65,17 @@ function App() {
           </Route>end: persit login */}
           
           {/* login required and roles*/}
-          <Route element={<PersistLogin/>}>
             <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}>
               <Route path='/nestyourhome' element={<NestYourHome/>}/>
               <Route path='/wishlist' element={<WishList/>}/>
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/myplace/:id' element={<MyPlace/>}/>
             </Route>{/*end: roles */}
-          </Route>{/* end: persit login*/}
+            </Route>{/* end: persit login*/}
+          </Suspense>
         </Route>{/* end: main layout */}
 
+        <Suspense fallback={<Loader/>}>
           <Route element={<PersistLogin/>}>
             <Route element={< AddAccomodationLayout/>}>
                 <Route path='/nestyourhome/addaccomodation' element={<DescribeYourHome/>}/>
@@ -84,8 +86,8 @@ function App() {
                 <Route path='/nestyourhome/amenities' element={<Amenities/>}/>
             </Route> {/* end: /nestyourhome */}
           </Route>{/* end: persit login*/}
+        </Suspense>
       </Routes>
-      </Suspense>
     </>
   );
 }

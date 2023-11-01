@@ -8,11 +8,12 @@ export default function PersistLogin(){
     const [isLoading, setIsLoading] = useState(true)
     const refresh = useRefresh()
     const {auth} = useAuth()
-
+    console.log('persist login')
     useEffect(()=>{
         let isMounted = true
         const verifyRefreshToken = async()=>{
             try{
+                console.log('call verify')
                 await refresh()
             }catch(err){
                 console.log(err)
