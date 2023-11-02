@@ -47,7 +47,7 @@ export default function Index(){
           isMounted && setIsLoading(false)
         }
       }
-      // getPlace()
+      getPlace()
       return ()=>{
         isMounted = false
       }
@@ -63,7 +63,7 @@ export default function Index(){
           console.log(err)
         }
       }
-      // auth.accessToken && getWishlist()
+      auth.accessToken && getWishlist()
     },[places])
 
     let placeElem = []
