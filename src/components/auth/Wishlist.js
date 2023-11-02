@@ -25,7 +25,7 @@ export default function WishList(){
     },[])
     const wishlistElem  = wishlist?.map((place, i)=><Place key={i} place={place} heart={true}/>)
     return(
-        <div className="wishlist">
+        <div className="profile">
             <h2 className="page-heading" style={{marginBottom: '20px'}}>
                 {auth?.name}'s wishlist:</h2>
                 <div className="main">

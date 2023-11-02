@@ -32,6 +32,7 @@ body{
     background-color: var(--white);
     min-height: 100vh;
     max-width: 100vw;
+    overflow: hidden;
 }
 #root{
     position: relative;
@@ -1033,7 +1034,7 @@ footer{
         width: 250px;
     }
     .main{
-        padding: 0 10vw;
+        padding: 0 8vw;
     }
 }
 

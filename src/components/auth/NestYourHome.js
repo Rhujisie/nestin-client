@@ -31,7 +31,7 @@ export default function NestYourHome(){
         key={i}/>)
 
     return(
-        <div className="nest-your-home">
+        <div className="profile">
             <h2 className="page-heading">Hello, {auth?.name}:</h2>
             <motion.div className="add-accomodation" 
             whileHover={{scale: 1.05}} whileTap={{scale: .95}}>
