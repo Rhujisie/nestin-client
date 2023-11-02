@@ -75,6 +75,7 @@ export default function Index(){
       placeElem = places?.map((place, index)=>
       <Places key={index} place={place}/>)
     }
+    console.log(isLoading)
     return(
         <div className="main">
             {isLoading? <Loader/>: placeElem}

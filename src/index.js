@@ -6,17 +6,11 @@ import {AuthProvider} from './context/AuthProvider'
 import UserProvider from './context/UserProvider'
 import PlaceProvider from './context/PlaceProvider';
 import {LocationProvider} from './context/locationProvider';
-import {disableReactDevTools} from '@fvilers/disable-react-devtools'
-
-if(process.env.NODE_ENV === 'production'){
-  console.log('production', process.env.PUBLIC_URL)
-  disableReactDevTools()
-}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+  //<React.StrictMode>
+    <BrowserRouter>
       <UserProvider>
         <AuthProvider>
           <PlaceProvider>
@@ -27,7 +21,7 @@ root.render(
         </AuthProvider>
       </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  //</React.StrictMode>
 );
 
 

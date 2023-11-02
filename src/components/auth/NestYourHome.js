@@ -19,6 +19,7 @@ export default function NestYourHome(){
         const getPlace = async()=>{
           try{
             const {data} = await axiosPrivate.get('/place')
+            console.log(data)
             setPlaces(data)
           }catch(err){
             console.log(err)

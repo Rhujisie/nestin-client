@@ -12,7 +12,6 @@ export default function useRefresh(){
             setAuth(prev=> ({...prev, ...data}))
             return data
         }catch(err){
-            console.log(err)
             return null
         }
     }

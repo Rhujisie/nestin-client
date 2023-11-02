@@ -1,11 +1,13 @@
-import axios from "../../api/axios";
 import {useEffect, useRef, useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
+import {motion} from 'framer-motion'
+
+import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
 
 export default function Login(){
 
-    const {auth,setAuth} = useAuth()
+    const {setAuth} = useAuth()
     const navigate = useNavigate()
     const userRef = useRef()
     const errRef = useRef()
@@ -67,7 +69,9 @@ export default function Login(){
                                 required
                                 autoComplete="off"
                         />
-                        <button className="page-button">Login</button>
+                        <motion.button className="page-button"
+                        whileHover={{scale: 1.1}}
+                        whileTap={{scale: .9}}>Login</motion.button>
                     </form>
                     {/* styling not done */}
                     <div className="forgot-passowrd">

@@ -77,12 +77,10 @@ export default function Header(){
                 <div className='search'>
                     <input list="place" id='location' placeholder='Search...'
                         value={location} onChange={(e)=>setLocation(e.target.value)}/>
-                    <datalist id="place">
-                    {city.forEach(element =><option key={element} value={element}/>)}
-                    </datalist>
                     <label className='location-logo' htmlFor='location'>
                         <img src={PinLogo} alt='pin' className='pin-logo'/>
                     </label>
+                    {/* <div>{city.map((data)=><div key={data}>{data}</div>)}</div> */}
                 </div>
             </nav>
         </header>
