@@ -1,7 +1,6 @@
 import usePlace from "../hooks/usePlace"
 
 import Home from '../icon/house.png'
-import HomeStay from '../icon/homestay.png'
 import Hotel from '../icon/resort.png'
 import Flat from '../icon/building.png'
 import Cabin from '../icon/cabin.png'
@@ -10,7 +9,7 @@ import Farm from '../icon/barn.png'
 import Tent from '../icon/tent.png'
 import TinyHouse from '../icon/tiny-house.png'
 import Room from '../icon/living-room.png'
-import { Link, useLocation, useOutletContext, useParams} from "react-router-dom"
+import { Link, useOutletContext, useParams} from "react-router-dom"
 import { useEffect } from "react"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import Places from "../place/Places"
+import Loader from "../Loader/Loader"
 import axios from '../../api/axios'
 
 import useAxiosPrivate from "../../hooks/useAxiosPrivate"
@@ -9,20 +10,21 @@ import useAuth from "../../hooks/useAuth"
 
 export default function Pg(){
 
-  const {auth} = useAuth()
-
   const [places, setPlaces] = useState()
   const [wishlist, setWishlist] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
   const axiosPrivate = useAxiosPrivate()
   const {location} = useLocation()
-  console.log('pg', auth, location)
+  const {auth} = useAuth()
+
   //get places
   useEffect(()=>{
+    let isMounted = true
     const getPlace = async()=>{
       try{
         if(auth.accessToken){
-          if(location){
+          if(location.length){
             const {data} = await axiosPrivate.get(`/user/main/all/pg?search=${location}`)
             setPlaces(data)
           }else{
@@ -30,7 +32,7 @@ export default function Pg(){
             setPlaces(data)
           }
         }else{
-          if(location){
+          if(location.length){
             const {data} = await axios.get(`/main/all/pg?search=${location}`)
             setPlaces(data)
           }else{
@@ -41,8 +43,14 @@ export default function Pg(){
       }catch(err){
         console.log(err)
       }
+      finally{
+        isMounted && setIsLoading(false)
+      }
     }
     getPlace()
+    return()=>{
+      isMounted = false
+    }
   }, [])
   
   //get wishlist 
@@ -55,12 +63,12 @@ export default function Pg(){
         console.log(err)
       }
     }
-    auth.accessToken && getWishlist()
+    auth && getWishlist()
   },[places])
 
   let placeElem = []
 
-  if(auth.accessToken && wishlist?.length){
+  if(auth && wishlist?.length){
     placeElem = places?.map((place, index)=>
     <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
   }else{
@@ -70,7 +78,7 @@ export default function Pg(){
 
     return(
         <div className="main">
-            {places && placeElem}
+            {isLoading? <Loader/>: placeElem}
         </div>
     )
 }

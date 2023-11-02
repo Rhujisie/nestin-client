@@ -360,12 +360,13 @@ input:focus{
 }
 /* profile */
 .profile{
-    width: 100%;
+    max-width: 1150px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    margin: auto;
 }
 .profile-name{
     font-size: 25px;
@@ -784,12 +785,12 @@ textarea{
     height: 34px;
 }
 .display-amenities> div{
-    font-size: 13px;
+    font-size: 12px;
     padding: 3px;
     word-wrap: normal;
     padding:0 2px;
     border-radius: 5px;
-    color: rgb(30, 58, 185);
+    color: #032549;
     background-color: var(--yellow);
 }
 /* photos */
@@ -818,7 +819,6 @@ textarea{
     height: 100%;
     width: 100%;
     color: white;
-    background-color: #ebbb53;
 }
 .carousel-item>img{
     height: 100%;
@@ -957,6 +957,8 @@ footer{
     padding: 10px;
     width: 100vw;
     margin-top: 20px;
+    position: relative;
+    z-index: 1;
 }
 .footer-container{
     display: grid;
