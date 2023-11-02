@@ -9,7 +9,7 @@ import {LocationProvider} from './context/locationProvider';
 import {disableReactDevTools} from '@fvilers/disable-react-devtools'
 
 if(process.env.NODE_ENV === 'production'){
-  console.log('production')
+  console.log('production', process.env.PUBLIC_URL)
   disableReactDevTools()
 }
 
