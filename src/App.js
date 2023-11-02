@@ -48,12 +48,12 @@ function App() {
           
           {/* login required and roles*/}
 
-            {/* <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}> */}
+            <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}>
               <Route path='/nestyourhome' element={<NestYourHome/>}/>
               <Route path='/wishlist' element={<WishList/>}/>
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/myplace/:id' element={<MyPlace/>}/>
-            {/* </Route>end: roles */}
+            </Route>{/* end: roles */}
           {/* </Route>end: persit login */}
         </Route>{/* end: main layout */}
         
