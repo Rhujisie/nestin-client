@@ -33,7 +33,7 @@ export default function PersistLogin(){
     return(
         <>
             {isLoading? 
-                <p>Loading...</p>:
+                <p></p>:
                 <Outlet/>}
         </>
     )

@@ -8,6 +8,7 @@
     position: absolute;
     left:0;
     top: 170px;
+    background-color: transparent;
 }
 .loading-container{
     position: relative;

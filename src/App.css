@@ -365,7 +365,7 @@ input:focus{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     margin: auto;
 }
 .profile-name{
@@ -378,14 +378,11 @@ input:focus{
     gap: 10px;
     align-items: center;
     width: 100%;
+    padding: 0 20px;
     border-bottom: 1px solid var(--word);
 }
 .profile-header> svg{
     width: 70px;
-}
-.logout-button{
-    margin-left: 50%;
-    transform: translateX(-50%);
 }
 /* nest your home */
 .accomodation-outlet{
