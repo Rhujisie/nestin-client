@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           {/* public route */}
-          <Route element={<PersistLogin/>}>
+          {/* <Route element={<PersistLogin/>}> */}
             <Route index element={<Index/>}/>
             <Route path='/rent' element={<Rent/>}/>
             <Route path='/hotel' element={<Hotel/>}/>
@@ -48,16 +48,16 @@ function App() {
           
           {/* login required and roles*/}
 
-            <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}>
+            {/* <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}> */}
               <Route path='/nestyourhome' element={<NestYourHome/>}/>
               <Route path='/wishlist' element={<WishList/>}/>
               <Route path='/profile' element={<Profile/>}/>
               <Route path='/myplace/:id' element={<MyPlace/>}/>
-            </Route>{/*end: roles */}
-          </Route>{/* end: persit login*/}
+            {/* </Route>end: roles */}
+          {/* </Route>end: persit login */}
         </Route>{/* end: main layout */}
         
-          <Route element={<PersistLogin/>}>
+          {/* <Route element={<PersistLogin/>}> */}
             <Route element={< AddAccomodationLayout/>}>
                 <Route path='/nestyourhome/addaccomodation' element={<DescribeYourHome/>}/>
                 <Route path='/nestyourhome/updateplace/:id' element={<DescribeYourHome/>}/>
@@ -66,7 +66,7 @@ function App() {
                 <Route path='/nestyourhome/photos' element={<Photos/>}/>
                 <Route path='/nestyourhome/amenities' element={<Amenities/>}/>
             </Route> {/* end: /nestyourhome */}
-          </Route>{/* end: persit login*/}
+          {/* </Route>end: persit login */}
       </Routes>
     </>
   );

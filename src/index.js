@@ -8,12 +8,15 @@ import PlaceProvider from './context/PlaceProvider';
 import {LocationProvider} from './context/locationProvider';
 import {disableReactDevTools} from '@fvilers/disable-react-devtools'
 
-if(process.env.NODE_ENV === 'production') disableReactDevTools()
+if(process.env.NODE_ENV === 'production'){
+  console.log('production')
+  disableReactDevTools()
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <UserProvider>
         <AuthProvider>
           <PlaceProvider>
