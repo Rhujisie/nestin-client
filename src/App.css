@@ -1,6 +1,4 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 :root{
     /* color */
     --green:#43ad1f;
@@ -12,10 +10,6 @@
     /* font */
     --primary-font:'Open Sans', sans-serif;
 }
-
-/* #ff8400
-#f0bc48
- */
 *{
     box-sizing: border-box;
     margin: 0;
@@ -36,7 +30,6 @@ body{
 #root{
     position: relative;
 }
-/* new */
 img{
     overflow: clip !important;
 }
@@ -49,7 +42,6 @@ a{
     padding: 0;
 }
 /* header */
-/* new */
 header{
     width: 100vw;
     background-color: var(--white);
@@ -188,11 +180,11 @@ nav{
 /* outlet */
 .outlet{
     min-height: 80vh;
-    padding: 15px 0;
 }
 /* Main */
 .main{
     width: 100%;
+    padding: 15px 0;
 }
 .page-heading{
     font-size: 22px;
@@ -619,7 +611,6 @@ textarea{
     font-size: 17px;
     font-weight: 400;
 }
-
 .upload-logo{
     width: 40px;
 }
@@ -629,7 +620,6 @@ textarea{
     grid-template-columns: auto auto auto;
     gap: 5px;
 }
-
 .photo-display{
     width: 30vw;
     height: 15vh;
@@ -723,7 +713,7 @@ textarea{
     font-size: 14px;
 }
 .grey-place{
-    font-size: 13px;
+    font-size: 12px;
     color: var(--grey);
 }
 .bhk-contianer{
@@ -769,7 +759,6 @@ textarea{
 /* new */
 .display-amenities> div{
     font-size: 12px;
-    /* padding: 0 3px; */
     word-wrap: normal;
     padding:0 2px;
     border-radius: 5px;
@@ -924,7 +913,6 @@ textarea{
     background-color: var(--yellow);
 }
 /* wishlist */
-
 .heart-icon-empty{
     position:absolute;
     width: 30px;
@@ -932,9 +920,7 @@ textarea{
 .wishlist>p{
     margin: 10px 0;
 }
-
 /* footer */
-
 footer{
     background-color: #1f4064 !important;
     border: 1px solid rgba(33, 35, 38, 0.1);
@@ -968,7 +954,6 @@ footer{
     font-size: 12px;
     color: var(--grey);
 }
-
 /* media tablet */
 @media only screen and (min-width:640px) {
     .types-of-places{
@@ -1023,7 +1008,6 @@ footer{
         padding: 0 8vw;
     }
 }
-
 @media only screen and (min-width:992px) {
     .types-of-places{
         width: 90vw;
