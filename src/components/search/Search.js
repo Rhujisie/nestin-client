@@ -36,7 +36,7 @@ export default function Search({search ,setSearch}) {
     })
   return (
     <div className='search'>
-        <input placeholder='Search...'
+        <input placeholder='Search...' id='location'
             value={search} onChange={(e)=>handleChange(e)}/>
         <label className='location-logo' htmlFor='location'>
             <img src={PinLogo} alt='pin' className='pin-logo'/>

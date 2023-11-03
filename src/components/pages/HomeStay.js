@@ -62,12 +62,12 @@ export default function GuestHouse(){
         console.log(err)
       }
     }
-    auth && getWishlist()
+    auth.accessToken && getWishlist()
   },[places])
 
   let placeElem = []
 
-  if(auth && wishlist?.length){
+  if(auth.accessToken && wishlist?.length){
     placeElem = places?.map((place, index)=>
     <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
   }else{

@@ -67,7 +67,7 @@ export default function Index(){
 
     let placeElem = []
 
-    if(auth && wishlist?.length){
+    if(auth.accessToken && wishlist?.length){
       placeElem = places?.map((place, index)=>
       <Places key={index} place={place} heart={wishlist.includes(place._id)}/>)
     }else{
