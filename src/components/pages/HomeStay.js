@@ -50,7 +50,7 @@ export default function GuestHouse(){
     return ()=>{
       isMounted = false
     }
-  },[])
+  },[location])
   
   //get wishlist 
   useEffect(()=>{

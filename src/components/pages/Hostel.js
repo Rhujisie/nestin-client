@@ -51,7 +51,7 @@ export default function Hostel(){
     return ()=>{
       isMounted = false
     }
-  }, [])
+  }, [location])
   
   //get wishlist 
   useEffect(()=>{

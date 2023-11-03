@@ -50,7 +50,7 @@ export default function Rent(){
       return()=>{
         isMounted = false
       }
-    }, [])
+    }, [location])
 
       //get wishlist 
       useEffect(()=>{

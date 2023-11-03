@@ -2,19 +2,15 @@ import { useEffect, useState } from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {motion} from 'framer-motion'
 
-import useLocation from '../hooks/useLocation'
-
+import Search from './search/Search'
 import NestLogo from '../icon/nest.png'
-import PinLogo from '../icon/pin.gif'
-
-const city = ["Kohima", "Dimapur", "Wokha", "Meluri", "Phek", "Kiipheri",
- "Chumu", "Jalukie", "Lephori", "Peren", "Neiland", "Visema"]
 
 export default function Header(){
 
     const [showHeader, setShowHeader] = useState(false)
+    const [search, setSearch] = useState('')
+
     const [currentPixel, setCurrentPixel] = useState(window.scrollY)
-    const {location, setLocation} = useLocation()
 
     const displayHeader = ()=>{
         if(window.scrollY <= currentPixel){
@@ -24,14 +20,13 @@ export default function Header(){
         }
         setCurrentPixel(window.scrollY)
     }
+    //listen for scroll
     useEffect(()=>{
         window.addEventListener('scroll', displayHeader)
         return()=>{
-        window.removeEventListener('scroll', displayHeader)
-
+            window.removeEventListener('scroll', displayHeader)
         }
     })
-
     return(
         <header className={showHeader?'': 'active-header'}>
             <div className='types-of-places'>
@@ -74,14 +69,7 @@ export default function Header(){
                     </Link>
                     <div className='nestin'>NestIn</div>
                 </div>
-                <div className='search'>
-                    <input list="place" id='location' placeholder='Search...'
-                        value={location} onChange={(e)=>setLocation(e.target.value)}/>
-                    <label className='location-logo' htmlFor='location'>
-                        <img src={PinLogo} alt='pin' className='pin-logo'/>
-                    </label>
-                    {/* <div>{city.map((data)=><div key={data}>{data}</div>)}</div> */}
-                </div>
+                <Search search ={search} setSearch={setSearch}/>
             </nav>
         </header>
     )

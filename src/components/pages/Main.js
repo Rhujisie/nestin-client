@@ -16,7 +16,6 @@ export default function Index(){
     const axiosPrivate = useAxiosPrivate()
     const {location} = useLocation()
     const {auth} = useAuth()
-    console.log(auth, location)
 
     //get place
     useEffect(()=>{
@@ -51,7 +50,7 @@ export default function Index(){
       return ()=>{
         isMounted = false
       }
-    }, [])
+    }, [location])
     
     //get wishlist 
     useEffect(()=>{
@@ -75,7 +74,6 @@ export default function Index(){
       placeElem = places?.map((place, index)=>
       <Places key={index} place={place}/>)
     }
-    console.log(isLoading)
     return(
         <div className="main">
             {isLoading? <Loader/>: placeElem}

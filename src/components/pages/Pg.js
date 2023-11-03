@@ -51,7 +51,7 @@ export default function Pg(){
     return()=>{
       isMounted = false
     }
-  }, [])
+  }, [location])
   
   //get wishlist 
   useEffect(()=>{

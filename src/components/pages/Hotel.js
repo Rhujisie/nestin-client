@@ -51,7 +51,7 @@ export default function Hotel(){
     return ()=>{
       isMounted = false
     }
-  }, [])
+  }, [location])
   
   //get wishlist 
   useEffect(()=>{
