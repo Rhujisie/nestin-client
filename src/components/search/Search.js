@@ -3,15 +3,12 @@ import {motion, AnimatePresence} from 'framer-motion'
 import '../search/Search.css'
 import PinLogo from '../../icon/pin.gif'
 import useLocation from '../../hooks/useLocation'
-
 const city = ["Kohima", "Dimapur", "Wokha", "Meluri", "Phek", "Kiipheri",
  "Chumu", "Kalukie", "Lephori", "Peren", "Neiland", "Visema"]
-
 export default function Search({search ,setSearch}) {
     const [isHidden, setIsHidden] = useState(false)
     const [searchResult, setSearchResult] = useState(false)
     const {setLocation} = useLocation()
-
     const handleClick=(e, data)=>{
         setIsHidden(true)
         setSearchResult(true)

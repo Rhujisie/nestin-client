@@ -1,9 +1,7 @@
 import StarBlack from '../../icon/star-black.png'
 import axios from '../../api/axios'
 import { useEffect, useState } from 'react'
-
 export default function Rating({placeId}){
-
     const [rating, setRating] = useState()
     //get rating
     useEffect(()=>{
@@ -25,7 +23,6 @@ export default function Rating({placeId}){
         }
         getRating()
     },[])
-
     return(
         <>  {rating? <><img src={StarBlack} alt='star' style={{width: '13px'}}
                         className='rating_star'/>

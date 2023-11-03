@@ -2,13 +2,10 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefresh from "../../hooks/useRefresh";
 import useAuth from "../../hooks/useAuth";
-
-
 export default function PersistLogin(){
     const [isLoading, setIsLoading] = useState(true)
     const refresh = useRefresh()
     const {auth} = useAuth()
-
     useEffect(()=>{
         let isMounted = true
         const verifyRefreshToken = async()=>{

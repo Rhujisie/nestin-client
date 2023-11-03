@@ -3,7 +3,6 @@ import AddAccomodationNav from "./AddAccomodationNav"
 import AddAccomodationFooter from "./AddAccomodationFooter"
 import Completion from "./Completion"
 import { useState } from "react"
-
 export default function AddAccomodationLayout(){
     const [completion, setCompletion] = useState(0)
     return<>

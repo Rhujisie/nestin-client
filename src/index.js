@@ -9,7 +9,7 @@ import {LocationProvider} from './context/locationProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  //<React.StrictMode>
+  <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <AuthProvider>
@@ -21,7 +21,7 @@ root.render(
         </AuthProvider>
       </UserProvider>
     </BrowserRouter>
-  //</React.StrictMode>
+  </React.StrictMode>
 );
 
 

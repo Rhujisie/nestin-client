@@ -3,11 +3,8 @@ import Arrow from '../../icon/right-arrow.png'
 import CarouselItem from './CarouselItem'
 import {useState} from 'react'
 import {LayoutGroup, motion} from 'framer-motion'
-
 export default function Photos({photos}){
-    
     const [activeIndex, setActiveIndex] = useState(0)
-
     //carousel index decrease
     const handleLeft = (e)=>{
         e.preventDefault()
@@ -33,8 +30,6 @@ export default function Photos({photos}){
         visible:{opacity: 1},
         transition: {duration: 1, type: 'spring'}
       }
-      
-
     return (
         <>
             <motion.div className='photos' initial='hidden' 

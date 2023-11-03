@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {motion} from 'framer-motion'
-
 import Search from './search/Search'
 import NestLogo from '../icon/nest.png'
-
 export default function Header(){
-
     const [showHeader, setShowHeader] = useState(false)
     const [search, setSearch] = useState('')
-
     const [currentPixel, setCurrentPixel] = useState(window.scrollY)
-
     const displayHeader = ()=>{
         if(window.scrollY <= currentPixel){
             setShowHeader(false)

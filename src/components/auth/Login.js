@@ -1,28 +1,21 @@
 import {useEffect, useRef, useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import {motion} from 'framer-motion'
-
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
-
 export default function Login(){
-
     const {setAuth} = useAuth()
     const navigate = useNavigate()
     const userRef = useRef()
     const errRef = useRef()
-
     const [loginData, setLoginData] = useState({
         email: '', password: ''
     })
-
     const [errMsg, setErrMsg] = useState('')
-
      //setting focus on email input on page load
      useEffect(()=>{
         userRef.current.focus()
     }, [])
-
     //cleaning up error
     useEffect(()=>{
         setErrMsg('')
@@ -46,7 +39,6 @@ export default function Login(){
         errRef.current.focus()
        }
     }
-
     return(
                 <div className="login">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}aria-live="assertive">

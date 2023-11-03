@@ -1,14 +1,11 @@
 import { useOutletContext, Link, useLocation } from "react-router-dom"
 import usePlace from "../hooks/usePlace"
 import { useEffect } from "react"
-
 export default function Location(){
-
     const [completion,setCompletion] = useOutletContext()
     const {place,setPlace} = usePlace()
     const location = useLocation()
     const {id} = location.state
-
     useEffect(()=>{
         setCompletion(2)
         setPlace(prev=>({...prev,
@@ -17,18 +14,15 @@ export default function Location(){
             address: localStorage.getItem('address') || '',
             landmark: localStorage.getItem('landmark') || ''}))
     },[])
-
     useEffect(()=>{
         localStorage.setItem('district', place.district)
         localStorage.setItem('city', place.city)
         localStorage.setItem('address', place.address)
         localStorage.setItem('landmark', place.landmark)
     },[place])
-
     const handleChange=(e)=>{
         setPlace(prev=>({...prev, [e.target.name]: e.target.value}))
     }
-    console.log(place)
     return(
         <div className="location">
             <h2 className="page-heading">Make your location easily accessible.</h2>

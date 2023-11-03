@@ -1,20 +1,14 @@
 import axios from "../../api/axios";
 import {useEffect, useRef, useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-
+import { useNavigate} from "react-router-dom";
 export default function Recovery(){
-
     const navigate = useNavigate()
-
     const emailRef = useRef()
     const errRef = useRef()
-
     const [email, setEmail] = useState('')
     const [otp, setOtp] = useState('')
     const [recieveOTP, setRecieveOTP] = useState(false)
     const [errMsg, setErrMsg] = useState('')
-
      //setting focus on email input on page load
      useEffect(()=>{
         emailRef.current.focus()
@@ -25,7 +19,6 @@ export default function Recovery(){
     },[email])
     //handle login
     const handleSendOTP= async(e)=>{
-        console.log('generate')
         e.preventDefault()
        try{
             await axios.post('/generateotp', {email: email},{
@@ -39,7 +32,6 @@ export default function Recovery(){
        }
     }
     const handleVerifyOTP= async(e)=>{
-        console.log('verify')
         e.preventDefault()
         try{
             await axios.post('/verifyotp', {otp: otp, email: email},{
@@ -51,7 +43,6 @@ export default function Recovery(){
             errRef.current.focus()
         }
     }
-
     return(
                 <div className="recovery">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}aria-live="assertive">

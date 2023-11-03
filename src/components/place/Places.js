@@ -1,26 +1,18 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate} from 'react-router-dom'
-
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useAuth from '../../hooks/useAuth'
-
 import Rating from '../review/Rating'
 import Photos from './Photos'
-
 import Rupee from '../../icon/rupee.png'
 import HeartRed from '../../icon/heart-red.gif'
 import Heart from '../../icon/heart.gif'
-
 export default function Places({place, heart}){
-
     const [wishlist, setWishlist] = useState(heart)
-    //const [points, setPoints] = useState(place.points)
     const axiosPrivate = useAxiosPrivate()
     const {auth} = useAuth()
-
     const location = useLocation()
     const navigate = useNavigate()
-
     // toggle wishlist
     const handleHeart= async(e)=>{
         e.preventDefault()   
@@ -38,15 +30,7 @@ export default function Places({place, heart}){
             console.log(err)
         }
     }
-
-    //add points on place visit
-    //const handleClick = async()=>{
-        // !heart && await axios.patch(`/place/point/${place._id}`
-        // , {points: points + 2})
-        //console.log('handle Click')
-    // }
     const amenitiesElem = []
-
     for(let i = 0; i < 6; i++){
         amenitiesElem.push(
             <div key={i}>

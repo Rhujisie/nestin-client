@@ -11,19 +11,14 @@ import Kitchen from '../../icon/kitchen.png'
 import Livingroom from '../../icon/sofa.png'
 import Washroom from '../../icon/sink.png'
 import Photos from './Photos'
-
-
 export default function MyPlace(){
-
     const [place, setPlace] = useState()
     const [reviews, setReviews] = useState()
     const [errMsg, setErrMsg] = useState()
     const axiosPrivate = useAxiosPrivate()
     const navigate = useNavigate()
     const {id} = useParams()
-
     const errRef = useRef()
-
     //get place
     useEffect(()=>{
         const getPlace = async()=>{
@@ -45,19 +40,15 @@ export default function MyPlace(){
         }
         //getReview()
     },[])
-
     //erasing error on place change
     useEffect(()=>{
         setErrMsg('')
     },[place])
-
    const handleDelete = async()=>{
     await axiosPrivate.delete(`/place/delete/${id}`)
     navigate('/nestyourhome', {replace: true})
     }
-
     const reviewElem = reviews?.map((review, i)=><Review key={i} review={review}/>)
-
     return(
         <div className='my-place'>
              <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}aria-live="assertive">

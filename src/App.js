@@ -1,8 +1,5 @@
 import './App.css';
-//import dependencies
-import axios from 'axios'
 import {Routes, Route} from 'react-router-dom'
-//import react components
 import Layout from './components/Layout';
 import Index from './components/pages/Main'
 import Rent from './components/pages/Rent'
@@ -25,10 +22,6 @@ import Photos from './add-accomodation-pages/Photos';
 import Amenities from './add-accomodation-pages/Amenities';
 import MyPlace from './components/place/MyPlace';
 import Place from './components/place/Place'
-
-axios.defaults.baseURL = 'http://localhost:3000/api/v1'
-axios.defaults.withCredentials = true
-
 function App() {
   return (
     <>
@@ -45,9 +38,7 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/place/:id' element={<Place/>}/>
-          
           {/* login required and roles*/}
-
             <Route element={<RequireAuth allowedRoles={['user', 'editor', 'admin', 'god']}/>}>
               <Route path='/nestyourhome' element={<NestYourHome/>}/>
               <Route path='/wishlist' element={<WishList/>}/>
@@ -56,7 +47,6 @@ function App() {
             </Route>{/*end: roles */}
           </Route>{/* end: persit login*/}
         </Route>{/* end: main layout */}
-        
           <Route element={<PersistLogin/>}>
             <Route element={< AddAccomodationLayout/>}>
                 <Route path='/nestyourhome/addaccomodation' element={<DescribeYourHome/>}/>
@@ -71,5 +61,4 @@ function App() {
     </>
   );
 }
-
 export default App;

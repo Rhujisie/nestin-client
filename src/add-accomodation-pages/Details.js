@@ -1,21 +1,17 @@
 import { useEffect } from "react"
 import { Link, useLocation, useOutletContext } from "react-router-dom"
 import usePlace from "../hooks/usePlace"
-
 import Add from '../icon/add.png'
 import Minus from '../icon/minus.png'
 import Bedroom from '../icon/bedroom.png'
 import Kitchen from '../icon/kitchen.png'
 import Livingroom from '../icon/sofa.png'
 import Washroom from '../icon/sink.png'
-
 export default function Details(){
-
     const [completion, setCompletion] = useOutletContext()
     const {place, setPlace} = usePlace()
     const location = useLocation()
     const {id} = location.state
-
     useEffect(()=>{
         setCompletion(3)
         setPlace(prev=>({...prev,
@@ -31,7 +27,6 @@ export default function Details(){
         localStorage.setItem('kitchen', place.kitchen)
         localStorage.setItem('washroom', place.washroom)
     },[place])
-
     const handleAdd = (e)=>{
         const name = e.target.name
         const value = place[name]
@@ -43,7 +38,6 @@ export default function Details(){
         if(value === 0) return
         setPlace(prev=>({...prev, [e.target.name]: value - 1}))
     }
-    console.log(place)
     return(
         <div className='details'>
             <h2 className="page-heading">

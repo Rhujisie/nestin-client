@@ -1,26 +1,18 @@
 import { useEffect, useState } from 'react'
 import {useLocation, useNavigate, Link} from 'react-router-dom'
-
 import Places from '../place/Places'
-
 import useLogout from '../../hooks/useLogout'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useUser from '../../hooks/useUser'
-
 import Add from '../../icon/add.png'
-
 export default function Profile(){
-
     const [places, setPlaces] = useState()
     const [isLoading, setIsLoading] = useState(true)
-
     const {user, setUser} = useUser()
     const axiosPrivate = useAxiosPrivate()
-
     const logout = useLogout()
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(isLoading)
     //fetch user
     useEffect(() => {
         let isMounted = true;
@@ -44,7 +36,6 @@ export default function Profile(){
             controller.abort();
         }
     }, [])
-
     //get places
     useEffect(()=>{
         let isPlace = true
@@ -83,10 +74,8 @@ export default function Profile(){
                     <div className='page-heading'>{user?.name}</div>
                     <div>{user?.email}</div>
                 </div>
-<button onClick={signOut} className='page-button logout-button'>Logout</button>
-
+                <button onClick={signOut} className='page-button logout-button'>Logout</button>
             </div>
-            
             <div className="add-accomodation">
                 <div className="add-logo">
                     <img src={Add} alt='add'/>

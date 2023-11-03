@@ -2,17 +2,12 @@ import {useLocation, useNavigate, useOutletContext} from "react-router-dom";
 import usePlace from "../hooks/usePlace"
 import { useEffect, useRef, useState } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-
-//import Upload from '../icon/upload.png'
 import Rupee from '../icon/rupee.png'
 import Upload from '../icon/cloud-upload.png'
 import Star from '../icon/star.png'
 import Delete from '../icon/trash.png'
 import StarColored from '../icon/star-colored.png'
-
-
 export default function Photos(){
-
     const {place, setPlace} = usePlace()
     const [completion, setCompletion] = useOutletContext()
     const [errMsg, setErrMsg] = useState()
@@ -21,8 +16,6 @@ export default function Photos(){
     const navigate = useNavigate()
     const location  = useLocation()
     const {id} = location.state
-
-
     useEffect(()=>{
         setCompletion(5)
         setPlace(prev=>({...prev, 
@@ -55,7 +48,6 @@ export default function Photos(){
     useEffect(()=>{
         setErrMsg('')
     },[place])
-
     const deletePhoto=(photo)=>{
         const newPhotos = place.photos.filter(data=> data !== photo)
         setPlace(prev=>({...prev, photos: newPhotos}))
@@ -64,7 +56,6 @@ export default function Photos(){
         const newPhotos = place.photos.filter(data=> data !== photo)
         setPlace(prev=>({...prev, photos: [photo, ...newPhotos]}))
     }
-    
     const handleChange =(e)=>{
         setPlace(prev=>({...prev, [e.target.name]: e.target.value}))
     }
@@ -74,7 +65,6 @@ export default function Photos(){
         for(let i =0; i < files.length; i++){
             file.append('photos', files[i])
         }
-        console.log('file', file)
         try{
             const {data} = await axiosPrivate.post('/uploads', file,{
                 headers:{
@@ -103,7 +93,6 @@ export default function Photos(){
             errRef.current.focus()
         }
    }
-
     const photoElem = place?.photos?.map((photo, i)=> 
     <div key={i} className="photo-display">
         <img className='photo' alt= 'beautiful images'
@@ -117,7 +106,6 @@ export default function Photos(){
             :<img src={Star} alt='star' className="star-icon"/>}
         </button>
     </div>)
-
     return(
         <div className="photos">
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}aria-live="assertive">

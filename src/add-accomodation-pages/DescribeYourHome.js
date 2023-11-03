@@ -1,7 +1,5 @@
 import usePlace from "../hooks/usePlace"
-
 import Home from '../icon/house.png'
-import HomeStay from '../icon/homestay.png'
 import Hotel from '../icon/resort.png'
 import Flat from '../icon/building.png'
 import Cabin from '../icon/cabin.png'
@@ -10,17 +8,14 @@ import Farm from '../icon/barn.png'
 import Tent from '../icon/tent.png'
 import TinyHouse from '../icon/tiny-house.png'
 import Room from '../icon/living-room.png'
-import { Link, useLocation, useOutletContext, useParams} from "react-router-dom"
+import { Link, useOutletContext, useParams} from "react-router-dom"
 import { useEffect } from "react"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
-
 export default function DescribeYourHome(){
     const {place,setPlace} = usePlace()
     const [completion, setCompletion] = useOutletContext()
     const {id} = useParams()
     const axiosPrivate = useAxiosPrivate()
-    
-    console.log(place, id)
     useEffect(()=>{
         setCompletion(1)
         if(!id){
@@ -50,7 +45,6 @@ export default function DescribeYourHome(){
                 localStorage.setItem('address', place.address)
                 localStorage.setItem('landmark', place.landmark)
     },[place])
-
     return(
         <>
             <h2 className="page-heading">Select which describes your place best.</h2>
@@ -136,4 +130,3 @@ export default function DescribeYourHome(){
         </>
     )
 }
-

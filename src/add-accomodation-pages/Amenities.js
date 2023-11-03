@@ -27,25 +27,20 @@ export default function Amenities(){
     const {place, setPlace} = usePlace()
     const location = useLocation()
     const {id} = location.state
-
-    console.log(place)
     useEffect(()=>{
         setCompletion(4)
         setPlace(prev=>({...prev, 
             amenities:JSON.parse(localStorage.getItem('amenities')) || []}))
     },[])
-
     useEffect(()=>{
         localStorage.setItem('amenities', JSON.stringify(place.amenities))
     },[place])
-
     const handleClick=(data)=>{
         const newAmenities = place.amenities.includes(data)? 
         place.amenities.filter(amenitie=> amenitie !== data)
         : [...place.amenities, data]
         setPlace(prev=> ({...prev, amenities: newAmenities}))
     }
-
     return(
         <div className='amenities'>
             <h2 className="page-heading">

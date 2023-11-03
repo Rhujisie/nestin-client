@@ -2,14 +2,10 @@ import {axiosPrivate} from '../api/axios';
 import useRefresh from "./useRefresh";
 import useAuth from "./useAuth";
 import { useEffect } from "react";
-
 export default function useAxiosPrivate(){
-
     const refresh = useRefresh()
     const {auth} = useAuth()
-
     useEffect(()=>{
-
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config=>{
                 if(!config.headers['Authorization']){
@@ -18,12 +14,10 @@ export default function useAxiosPrivate(){
                 return config
             },(error)=> Promise.reject(error)
         )
-
         const responseIntercept = axiosPrivate.interceptors.response.use(
             response => response,
             async(error)=>{
                 const prevRequest = error?.config
-                console.log(error)
                 //(error?.response?.status === 403) on if statment 
                 if(error && !prevRequest?.sent){
                     prevRequest.sent = true
@@ -39,6 +33,5 @@ export default function useAxiosPrivate(){
             axiosPrivate.interceptors.response.eject(responseIntercept)
         }
     },[auth, refresh])
-
     return axiosPrivate
 }

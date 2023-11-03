@@ -1,46 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate} from "react-router-dom";
 import axios from "../../api/axios";
-
-
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-
 export default function Reset(){
     const passwordRef = useRef()
     const errRef = useRef()
-
     const navigate = useNavigate()
     const location = useLocation()
-
     const email = location.state?.email
-
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);  
-
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
-
     const [errMsg, setErrMsg] = useState('');
-
     //setting focus to name input on load
     useEffect(()=>{
         passwordRef.current.focus()
     }, [])
-
     //validing passowrd and confirm password
     useEffect(()=>{
         setValidPwd(PWD_REGEX.test(password))
         setValidMatch(password === confirmPassword)
     }, [password, confirmPassword])
-
     //clear error on state change
     useEffect(() => {
         setErrMsg('');
     }, [password, confirmPassword])
-
     //handle resigter
     const handleSubmit= async(e)=>{
         e.preventDefault()
@@ -59,7 +46,6 @@ export default function Reset(){
              </p>
             <h4>Reset Password</h4>
             <form onSubmit={handleSubmit} className="register-form">
-
                 <input type='password' placeholder="password" name='password'
                     ref={passwordRef}
                     value={password} onChange={(e)=>setPassword(e.target.value)}

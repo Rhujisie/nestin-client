@@ -5,35 +5,18 @@ import useAuth from '../../hooks/useAuth'
 import Rating from '../review/Rating'
 import Review from '../review/Review'
 import Photos from './Photos'
-
 import Rupee from '../../icon/rupee.png'
 import Bedroom from '../../icon/bedroom.png'
 import Kitchen from '../../icon/kitchen.png'
 import Livingroom from '../../icon/sofa.png'
 import Washroom from '../../icon/sink.png'
-
 export default function MyPlace(){
-
     const [place, setPlace] = useState()
     const [reviews, setReviews] = useState()
     const [errMsg, setErrMsg] = useState()
     const {id} = useParams()
     const {auth} = useAuth()
     const errRef = useRef()
-
-    //update points
-    // useEffect(()=>{
-    //     const getPoints = async()=>{
-    //         try{    
-    //             await axios.get(`/place/points/${id}`)
-    //             console.log('points')
-    //         }catch(err){
-    //             console.log(err)
-    //         }
-    //     }
-    //     //getPoints()
-    // },[])
-
     //get a place
     useEffect(()=>{
         const getPlace = async()=>{
@@ -46,7 +29,6 @@ export default function MyPlace(){
         }
         getPlace()
     },[])
-
     //get review on place
     useEffect(()=>{
         const getReview = async()=>{
@@ -55,19 +37,15 @@ export default function MyPlace(){
         }
         //getReview()
     },[])
-
     //erasing error on place change
     useEffect(()=>{
         setErrMsg('')
     },[place])
-
     //handleContactOwner
     const handleContactOwner=()=>{
 
     }
-
     const reviewElem = reviews?.map((review, i)=><Review key={i} review={review}/>)
-
     return(
         <div className='my-place'>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}aria-live="assertive">

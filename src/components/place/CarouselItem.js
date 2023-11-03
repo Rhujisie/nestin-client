@@ -1,7 +1,4 @@
-
-
 export default function CarouselItem({photo}){
-
     return(
         <div className='carousel-item'>
             <img alt= 'beautiful images'

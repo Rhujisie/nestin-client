@@ -3,15 +3,11 @@ import { useEffect, useState } from "react"
 import Place from  '../place/Places'
 import useAuth from "../../hooks/useAuth"
 import { Link } from "react-router-dom"
-
 import Heart from '../../icon/heart-red.gif'
-
 export default function WishList(){
-
     const [wishlist, setWishlist] = useState()
     const axiosPrivate = useAxiosPrivate()
     const {auth} = useAuth()
-
     useEffect(()=>{
         const getWishlist = async()=>{
             try{

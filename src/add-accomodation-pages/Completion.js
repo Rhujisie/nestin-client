@@ -1,5 +1,3 @@
-
-
 export default function Completion({completion}){
     const elem = []
     for(let i= 1; i< 6; i++){

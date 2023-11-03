@@ -1,75 +1,53 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {motion} from 'framer-motion'
-
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
-
 const USER_REGEX = /^[A-z][A-z-_\s?]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PHONE_NUMBER_REGEX = /^\d{10}$/
-
 export default function Register(){
-
     const userRef = useRef()
     const errRef = useRef()
-    const {auth, setAuth} = useAuth()
-
+    const {setAuth} = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname ||'/'
-
     const [loginData, setLoginData] = useState(
         {name: '', email: '', phoneNumber: '', password:''})
-    
     const [confirmPassword, setConfirmPassword] = useState('')
-
     const [validName, setValidName] = useState(false)
     const [userNameFocus, setUserNameFocus] = useState(false)
-
     const [validPwd, setValidPwd] = useState(false);
     const [pwdFocus, setPwdFocus] = useState(false);  
-    
     const [validEmail, setValidEmail] = useState(false);
     const [emailFocus, setEmailFocus] = useState(false);
-    
     const [validPhone, setValidPhone] = useState(false);
     const [phoneFocus, setPhoneFocus] = useState(false);
-
     const [validMatch, setValidMatch] = useState(false);
     const [matchFocus, setMatchFocus] = useState(false);
-
     const [errMsg, setErrMsg] = useState('');
-
-    console.log(validName,validEmail,validPhone,validMatch,validPwd)
-
     //setting focus to name input on load
     useEffect(()=>{
         userRef.current.focus()
     }, [])
-
     //validing name
     useEffect(()=>{
         setValidName(USER_REGEX.test(loginData.name))
     }, [loginData.name])
-
     //validing email
     useEffect(()=>{
         setValidEmail(EMAIL_REGEX.test(loginData.email))
     }, [loginData.email])
-    
     //validing phone number
     useEffect(()=>{
         setValidPhone(PHONE_NUMBER_REGEX.test(loginData.phoneNumber))
     }, [loginData.phoneNumber])
-
     //validing passowrd and confirm password
     useEffect(()=>{
         setValidPwd(PWD_REGEX.test(loginData.password))
         setValidMatch(loginData.password === confirmPassword)
     }, [loginData.password, confirmPassword])
-
     //clear error on state change
     useEffect(() => {
         setErrMsg('');
@@ -86,7 +64,6 @@ export default function Register(){
             setAuth(data)
             navigate(from, {replace: true})
         }catch(err){
-            //console.log
             console.log(err)
             setErrMsg(err.response.data.msg)
             errRef.current.focus()

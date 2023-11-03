@@ -1,17 +1,13 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
-
 import Upload from '../images/upload.png'
 import Heart from '../images/heart.png'
 import User from '../images/user.png'
-
-
 export default function NavBase(){
      const [showBaseNav, setShowBaseNav] = useState(true)
      const [currentPixel, setCurrentPixel] = useState(window.scrollY)
      const {auth} = useAuth()
-     
      const displayBaseNav=()=>{
         if(window.scrollY >= currentPixel){
             setShowBaseNav(false)
