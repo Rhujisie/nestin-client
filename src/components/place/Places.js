@@ -37,6 +37,7 @@ export default function Places({place, heart}){
                 {place.amenities[i]}
             </div>)
     }
+    console.log('places', location.pathname)
     return(
             <div className="places">
                 <Link to={location.pathname === '/nestyourhome'|| '/profile'?
