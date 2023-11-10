@@ -37,10 +37,9 @@ export default function Places({place, heart}){
                 {place.amenities[i]}
             </div>)
     }
-    console.log('places', location.pathname)
     return(
             <div className="places">
-                <Link to={location.pathname === '/nestyourhome'|| '/profile'?
+                <Link to={location.pathname === '/nestyourhome'|| location.pathname === '/profile'?
                 `/myplace/${place._id}`: `/place/${place._id}`}>
                 <div className='photos-container'>
                     <Photos photos={place.photos}/>
